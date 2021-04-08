@@ -28,7 +28,7 @@ class DataProcessor:
     # read csv file
     def load_file(self, filename):
         csvfile = open(filename, encoding='utf-8')
-        df = pd.read_csv(csvfile, engine='python', nrows=100000)
+        df = pd.read_csv(csvfile, engine='python')
         for idx in range(len(df)):
             user = df["userId"][idx]
             movie = df["movieId"][idx]

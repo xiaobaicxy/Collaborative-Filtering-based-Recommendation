@@ -17,7 +17,6 @@ class ItemBasedCF():
         for user in train_set.keys():
             movies = train_set[user].keys()
             for m1 in movies:
-                count = 0
                 for m2 in movies:
                     if m1 == m2:
                         continue
@@ -26,9 +25,6 @@ class ItemBasedCF():
                     r1 = train_set[user][m1]["rating"]
                     r2 = train_set[user][m2]["rating"]
                     self.movie_sim_matrix[m1][m2] += (10 - abs(r1 - r2))
-                    count += 1
-                if m1 in self.movie_sim_matrix and m2 in self.movie_sim_matrix[m1]:
-                    self.movie_sim_matrix[m1][m2] /= count
         print('Calculate movie similarity matrix success!')
 
     # recommend top k movies to user
